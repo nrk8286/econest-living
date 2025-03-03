@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EcoNest Living - The future of sustainable and smart homes powered by AI, blockchain, and eco-friendly technologies. Shop for innovative solutions today!">
+    <meta name="keywords" content="sustainable living, smart homes, AI-powered sustainability, blockchain transparency, eco-friendly solutions">
+    <meta name="author" content="EcoNest Living">
+    <title>EcoNest Living - The Future of Smart & Sustainable Homes</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="banner futuristic">
+            <img src="assets/banner.jpg" alt="EcoNest Living Banner" class="banner-image">
+            <h1>Welcome to the Future of Sustainable Living</h1>
+            <p>Where AI meets Green Innovation</p>
+            <a href="shop.html" class="btn btn-glow">Shop Now</a>
+        </div>
+        <nav>
+            <div class="logo"><img src="assets/logo.png" alt="EcoNest Living Logo"></div>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="smart-tech.html">Smart Tech</a></li>
+                <li><a href="ai-assistant.html">AI Assistant</a></li>
+                <li><a href="vr-experience.html">VR Experience</a></li>
+                <li><a href="blockchain.html">Blockchain</a></li>
+                <li><a href="crypto.html">Crypto Payments</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero futuristic">
+        <h1>Redefining Smart & Sustainable Living</h1>
+        <p>Experience the future with AI-powered, blockchain-secured, and eco-friendly home solutions.</p>
+        <a href="shop.html" class="btn btn-glow">Explore Now</a>
+    </section>
+    
+    <section id="shop" class="shop futuristic">
+        <h2>Shop Our Latest Innovations</h2>
+        <div id="product-list" class="product-grid"></div>
+    </section>
+    
+    <section id="reviews" class="reviews futuristic">
+        <h2>Customer Reviews</h2>
+        <div id="review-list" class="review-grid"></div>
+        <textarea id="review-text" placeholder="Write your review..."></textarea>
+        <button id="submit-review" class="btn btn-glow">Submit Review</button>
+    </section>
+    
+    <section id="3d-model" class="three-d futuristic">
+        <h2>Explore Our Interactive 3D Smart Home</h2>
+        <p>Rotate, zoom, and interact with a futuristic sustainable home powered by AI and green tech.</p>
+        <canvas id="threeDCanvas"></canvas>
+    </section>
+    
+    <section id="checkout" class="checkout futuristic">
+        <h2>Secure Checkout</h2>
+        <p>Complete your purchase with crypto or traditional payment methods.</p>
+        <button id="checkout-crypto" class="btn btn-glow">Pay with Crypto</button>
+        <button id="checkout-card" class="btn btn-glow">Pay with Card</button>
+    </section>
+    
+    <section id="ai-chat" class="ai-chat futuristic">
+        <h2>AI Customer Assistant</h2>
+        <p>Chat with our AI assistant for product recommendations and support.</p>
+        <button id="start-chat" class="btn btn-glow">Chat Now</button>
+        <div id="chat-box" class="chat-hidden">
+            <div id="chat-messages"></div>
+            <input type="text" id="chat-input" placeholder="Ask me anything...">
+            <button id="send-chat" class="btn">Send</button>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 EcoNest Living. All rights reserved. | Powered by AI, Blockchain & Green Tech</p>
+    </footer>
+    
+    <script>
+        // Fetch Product Data from Cloudflare R2
+        async function fetchProducts() {
+            const response = await fetch('https://r2-storage-url/products.json');
+            const products = await response.json();
+            const productList = document.getElementById('product-list');
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+                productCard.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <span>$${product.price}</span>
+                    <button class="btn btn-glow buy-now" data-product='${JSON.stringify(product)}'>Buy Now</button>
+                `;
+                productList.appendChild(productCard);
+            });
+        }
+        fetchProducts();
+
+        // Interactive AI Chat
+        document.getElementById('start-chat').addEventListener('click', function() {
+            document.getElementById('chat-box').classList.toggle('chat-hidden');
+        });
+
+        document.getElementById('send-chat').addEventListener('click', function() {
+            const input = document.getElementById('chat-input').value;
+            if (input) {
+                document.getElementById('chat-messages').innerHTML += `<p>You: ${input}</p>`;
+                document.getElementById('chat-input').value = '';
+                setTimeout(() => {
+                    document.getElementById('chat-messages').innerHTML += `<p>AI: I'm here to assist you!</p>`;
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>
