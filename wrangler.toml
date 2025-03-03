@@ -1,0 +1,23 @@
+name = "econest-living"
+type = "javascript"
+account_id = "b614a334d81a99630c1b32f074e44a9e"
+workers_dev = true
+
+# Define environment variables
+[vars]
+NODE_ENV = "production"
+
+# Define the routes
+[site]
+bucket = "./public"
+entry-point = "workers-site"
+
+# Custom DNS settings (If using a custom domain)
+[env.production]
+zone_id = "2d043aa902443e828f1113c2d9d88701"
+routes = ["econestliving.com/*"]
+
+# Build settings
+[build]
+command = "npm run build"
+upload.format = "service-worker"
