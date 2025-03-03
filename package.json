@@ -1,0 +1,21 @@
+{
+  "name": "econest-living",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nrk8286/econest-living.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nrk8286/econest-living/issues"
+  },
+  "homepage": "https://github.com/nrk8286/econest-living#readme"
+}
