@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --test",
     "start": "node server.js"
   },
   "repository": {
@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/nrk8286/econest-living/issues"
   },
-  "homepage": "https://github.com/nrk8286/econest-living#readme"
+  "homepage": "https://github.com/nrk8286/econest-living#readme",
+  "dependencies": {
+    "express": "5.3.0"
+  }
 }
